@@ -38,6 +38,7 @@ function handleGuesses(letter) {
     } else {
         wrongGuesses++;
         console.log("Wrong guesses: " + wrongGuesses); //testing
+        updateHangman()
         checkLoss();
     }
 }
