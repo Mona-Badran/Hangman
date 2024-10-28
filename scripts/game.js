@@ -45,14 +45,14 @@ function handleGuesses(letter) {
 
 function checkWin() {
     if (correctGuesses.join('') === chosenWord) {
-        alert('Congratulations! You guessed the word!');
+        setTimeout(() => alert('Congratulations! You guessed the word!'), 100);
     }
 }
 
 function checkLoss() {
     console.log("Checking loss: wrongGuesses = " + wrongGuesses + ", maxWrong = " + maxWrong); //testing
     if (wrongGuesses === maxWrong) {
-        alert('Game Over! The word was: ' + chosenWord);
+        setTimeout(() => alert('Game Over! The word was: ' + chosenWord), 100);
     }
 }
 
