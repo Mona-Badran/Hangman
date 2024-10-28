@@ -11,6 +11,7 @@ var chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 var maxWrong = 6;
 var wrongGuesses = 0;
 var guessedLetters = [];
+
 var correctGuesses = Array(chosenWord.length).fill('_');
 
 function displayWordProgress() {
@@ -20,3 +21,20 @@ function displayWordProgress() {
 
 displayWordProgress();
 
+function handleGuesses(letter) {
+    if (guessedLetters.includes(letter))
+        return;
+
+    guessedLetters.push(letter);
+
+    if (chosenWord.includes(letter)) {
+        for (var i = 0; i < chosenWord.length; i++) {
+            if (chosenWord[i] === letter) {
+                correctGuesses[i] = letter;
+            }
+        }
+        displayWordProgress();
+    } else {
+        wrongGuesses++;
+    }
+}
