@@ -9,7 +9,7 @@ var wordBank = [
 ];
 var chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 var maxWrong = 6;
-var wrongGuesses = 0;
+let wrongGuesses = 0;
 var guessedLetters = [];
 
 var correctGuesses = Array(chosenWord.length).fill('_');
@@ -37,6 +37,7 @@ function handleGuesses(letter) {
         checkWin();
     } else {
         wrongGuesses++;
+        console.log("Wrong guesses: " + wrongGuesses); //testing
         checkLoss();
     }
 }
@@ -48,7 +49,8 @@ function checkWin() {
 }
 
 function checkLoss() {
-    if (wrongGuesses === maxWrongGuesses) {
+    console.log("Checking loss: wrongGuesses = " + wrongGuesses + ", maxWrong = " + maxWrong); //testing
+    if (wrongGuesses === maxWrong) {
         alert('Game Over! The word was: ' + chosenWord);
     }
 }
