@@ -34,7 +34,33 @@ function handleGuesses(letter) {
             }
         }
         displayWordProgress();
+        checkWin();
     } else {
         wrongGuesses++;
+        checkLoss();
     }
+}
+
+function checkWin() {
+    if (correctGuesses.join('') === chosenWord) {
+        alert('Congratulations! You guessed the word!');
+    }
+}
+
+function checkLoss() {
+    if (wrongGuesses === maxWrongGuesses) {
+        alert('Game Over! The word was: ' + chosenWord);
+    }
+}
+
+var letterElements = document.getElementsByClassName('letter');
+
+for (let i = 0; i < letterElements.length; i++) {
+    letterElements[i].addEventListener('click', function () {
+        var letter = this.textContent;
+
+        handleGuesses(letter);
+
+        this.classList.add('disabled');
+    });
 }
